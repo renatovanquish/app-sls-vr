@@ -1,0 +1,11 @@
+.root {
+  @apply mt-0 pt-0;
+}
+
+.listFlex {
+  @apply flex justify-center flex-wrap overflow-y-hidden mx-auto;
+}
+
+.listFlexCol {
+  @apply flex flex-col overflow-y-auto;
+}

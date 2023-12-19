@@ -1,0 +1,11 @@
+.select {
+  @apply border-none bg-transparent px-3 py-2 outline-none focus:outline-none appearance-none w-full transition duration-150 ease-in-out pr-10;
+
+  @screen sm {
+    min-width: 300px;
+  }
+}
+
+.select:focus {
+  @apply outline-none;
+}

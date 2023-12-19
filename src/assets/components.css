@@ -1,0 +1,172 @@
+.fit {
+  min-height: calc(100vh - 88px);
+}
+
+.PhoneInputInput {
+  background: none !important;
+  padding-top: 0.5rem !important;
+  padding-right: 0.75rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-left: 0.75rem !important;
+  border: none !important;
+  font-size: inherit !important;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.toggle-path {
+  transition: background 0.3s ease-in-out;
+}
+.toggle-circle {
+  top: 0.2rem;
+  left: 0.25rem;
+  transition: all 0.3s ease-in-out;
+}
+input:checked ~ .toggle-circle {
+  transform: translateX(100%);
+}
+input:checked ~ .toggle-path {
+  background-color: #81e6d9;
+}
+
+pwa-toast {
+  z-index: 999999;
+}
+
+.disabled,
+.disabled:hover {
+  @apply text-accent-0 bg-accent-2 cursor-not-allowed;
+  filter: grayscale(1);
+  -webkit-transform: translateZ(0);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+}
+
+*:focus {
+  outline: none;
+}
+
+/* 
+* ReactTags 
+*/
+div.ReactTags__tags {
+  position: relative;
+}
+
+div.ReactTags__tagInput {
+  margin-left: 2px;
+  margin-bottom: 12px;
+  width: 'auto';
+  border-radius: 25px;
+  display: inline-block;
+}
+div.ReactTags__tagInput input.ReactTags__tagInputField,
+div.ReactTags__tagInput input.ReactTags__tagInputField:focus {
+  margin: 0;
+  font-size: 14px;
+  width: 250px;
+  border: 2px solid #dee1e6;
+  background-color: #f1f3f4;
+  border-radius: 8px;
+  padding: 6px;
+  color: #21222c;
+}
+
+/* Styles for selected tags */
+div.ReactTags__selected span.ReactTags__tag {
+  border: 1px solid #dee1e6;
+  background: #fff;
+  font-size: 14px;
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  cursor: move;
+  border-radius: 5px;
+}
+.ReactTags__remove {
+  color: rgb(255, 0, 0) !important;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+div.ReactTags__suggestions {
+  position: absolute;
+}
+div.ReactTags__suggestions ul {
+  list-style-type: none;
+  box-shadow: 0.05em 0.01em 0.5em rgba(0, 0, 0, 0.2);
+  background: white;
+  width: 200px;
+}
+div.ReactTags__suggestions li {
+  border-bottom: 1px solid #ddd;
+  padding: 5px 10px;
+  margin: 0;
+}
+div.ReactTags__suggestions li mark {
+  text-decoration: underline;
+  background: none;
+  font-weight: 600;
+}
+div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
+  background: #b7cfe0;
+  cursor: pointer;
+}
+
+/* masonry grid */
+
+.gallery-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+.gallery-grid_column {
+  background-clip: padding-box;
+}
+
+.gallery-grid_column > div {
+  background: #ffffff;
+  padding: 5px;
+}
+
+/* toast */
+
+.toastContainer {
+  z-index: 999999 !important;
+}
+
+.toast.info {
+  background-color: #1b9ce2 !important;
+}
+
+table {
+  width: 100% !important;
+}
+
+.gallery-grid_column > div {
+  background-color: transparent !important;
+}
+
+.table-compact {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+
+.pdf-container {
+  user-select: none;
+  max-width: 200px;
+}
+
+@media print {
+  .pdf-container {
+    display: none;
+  }
+}

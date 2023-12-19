@@ -1,0 +1,46 @@
+.root {
+  @apply bg-tertiary text-tertiary w-full md:w-auto py-3 px-6 rounded-xl shadow focus:outline-none transition duration-500 ease-in-out transform cursor-pointer inline-flex uppercase justify-center items-center;
+}
+
+.root:hover {
+  @apply bg-tertiary-2;
+}
+
+.root:focus {
+  @apply outline-none;
+}
+
+.root[data-active] {
+  @apply bg-gray-600;
+}
+
+.loading {
+  @apply cursor-not-allowed;
+}
+
+.slim {
+  @apply py-2 transform-none normal-case;
+}
+
+.light {
+  @apply text-accent-7 transform-none normal-case bg-transparent;
+}
+.light:hover {
+  @apply bg-transparent border-accent-2;
+}
+
+.danger {
+  @apply text-white py-2 transform-none normal-case shadow-none bg-red-500;
+}
+.danger:hover {
+  @apply text-white bg-red-500;
+}
+
+.disabled,
+.disabled:hover {
+  @apply text-accent-0 bg-accent-6 cursor-not-allowed;
+  filter: grayscale(1);
+  -webkit-transform: translateZ(0);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+}

@@ -1,0 +1,22 @@
+{
+    "shared": {
+        "resourceName": "vod"
+    },
+    "template": {
+        "type": [
+            "HLS"
+        ],
+        "name": "Amplify_Video_HLS.json"
+    },
+    "sns": {
+        "createTopic": false
+    },
+    "contentDeliveryNetwork": {
+        "enableDistribution": false
+    },
+    "parameters": {
+        "authRoleName": {
+            "Ref": "AuthRoleName"
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.root {
+  @apply w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500;
+}
+
+.root:focus {
+  @apply outline-none shadow-outline-gray;
+}

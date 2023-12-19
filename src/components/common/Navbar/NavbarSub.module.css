@@ -1,0 +1,35 @@
+.nav {
+  @apply bg-tertiary text-tertiary font-semibold flex items-center relative;
+}
+
+.navmain {
+  @apply flex space-x-2 relative top-full left-2 right-0;
+}
+
+.link {
+  @apply cursor-pointer inline-flex px-1 lg:px-3 py-2 items-center hover:text-black;
+}
+
+.active {
+  @apply bg-tertiary-2 hover:text-tertiary;
+}
+
+.dropdownMenu {
+  @apply cursor-pointer justify-between inline-flex px-4 py-2 items-center hover:bg-tertiary-2 space-x-2;
+}
+
+.linkDropdown {
+  @apply cursor-pointer transition duration-300 absolute top-full left-0 md:w-56 bg-primary shadow-lg;
+}
+
+.linkItems {
+  @apply text-accent-6 text-xl md:text-base py-5 md:py-3 px-6 flex cursor-pointer transition ease-in-out duration-150 leading-6 font-medium items-center;
+}
+
+.linkItems:hover {
+  @apply bg-accent-1 text-orange-600;
+}
+
+.panelDropdown {
+  @apply p-6 transition duration-300 w-screen bg-accent-0 shadow-lg;
+}

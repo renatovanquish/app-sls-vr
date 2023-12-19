@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "br.com.voceradiologista.twa",
+                     "sha256_cert_fingerprints": ["33:0F:AD:7C:12:4F:D3:32:6E:C1:65:E3:98:99:C8:4D:2F:FB:B7:4F:C7:CA:C7:97:65:1A:96:92:77:F0:0F:E7"] }
+      }
+]

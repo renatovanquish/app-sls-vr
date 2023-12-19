@@ -1,0 +1,20 @@
+.dropdownMenu {
+  @apply fixed right-0 mt-3 md:mt-2 origin-top-right outline-none bg-accent-1 rounded-lg z-50 w-full h-full md:absolute md:top-10 md:border md:border-accent-1 md:shadow-lg md:w-56 md:h-auto;
+}
+
+.link {
+  @apply text-accent-5 text-xl md:text-base py-5 md:py-3 px-5 flex cursor-pointer transition ease-in-out duration-150 leading-6 font-medium items-center;
+  text-transform: capitalize;
+}
+
+.link:hover {
+  @apply bg-accent-2;
+} 
+
+.active {
+  @apply text-tertiary-2 font-bold;
+}
+
+.off {
+  @apply hidden;
+}

@@ -1,0 +1,105 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-appvr-dev-121447-authRole",
+      "UnauthRoleArn": "arn:aws:iam::074012923850:role/amplify-appvr-dev-121447-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::074012923850:role/amplify-appvr-dev-121447-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-appvr-dev-121447-deployment",
+      "UnauthRoleName": "amplify-appvr-dev-121447-unauthRole",
+      "StackName": "amplify-appvr-dev-121447",
+      "StackId": "arn:aws:cloudformation:us-east-1:074012923850:stack/amplify-appvr-dev-121447/ced80220-382d-11ed-a99b-0ab374b28881",
+      "AmplifyAppId": "d3o5i5mwkns0gl"
+    },
+    "categories": {
+      "video": {
+        "vod": {
+          "s3UUID": "9dps3lhletum"
+        }
+      },
+      "auth": {
+        "userPoolGroups": {},
+        "AuthCognito": {}
+      },
+      "function": {
+        "AdminQueries0ab6d7b2": {
+          "deploymentBucketName": "amplify-appvr-dev-121447-deployment",
+          "s3Key": "amplify-builds/AdminQueries0ab6d7b2-594867672b7159587352-build.zip"
+        },
+        "AdminCreateUser": {
+          "deploymentBucketName": "amplify-appvr-dev-121447-deployment",
+          "s3Key": "amplify-builds/AdminCreateUser-6b3365574f7851474646-build.zip"
+        },
+        "AdminAddUserToGroup": {
+          "deploymentBucketName": "amplify-appvr-dev-121447-deployment",
+          "s3Key": "amplify-builds/AdminAddUserToGroup-4e526a33632f46535076-build.zip"
+        },
+        "AdminDeleteUser": {
+          "deploymentBucketName": "amplify-appvr-dev-121447-deployment",
+          "s3Key": "amplify-builds/AdminDeleteUser-49487775743651637856-build.zip"
+        },
+        "SignedUrl": {
+          "deploymentBucketName": "amplify-appvr-dev-121447-deployment",
+          "s3Key": "amplify-builds/SignedUrl-323077737631615a7250-build.zip"
+        },
+        "DailyActions": {
+          "deploymentBucketName": "amplify-appvr-dev-121447-deployment",
+          "s3Key": "amplify-builds/DailyActions-4a4d743443787a593139-build.zip"
+        }
+      },
+      "storage": {
+        "S3Storage": {}
+      },
+      "api": {
+        "AdminQueries": {},
+        "ApiGraphQL": {}
+      }
+    }
+  },
+  "master": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-appvr-master-84656-authRole",
+      "UnauthRoleArn": "arn:aws:iam::074012923850:role/amplify-appvr-master-84656-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::074012923850:role/amplify-appvr-master-84656-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-appvr-master-84656-deployment",
+      "UnauthRoleName": "amplify-appvr-master-84656-unauthRole",
+      "StackName": "amplify-appvr-master-84656",
+      "StackId": "arn:aws:cloudformation:us-east-1:074012923850:stack/amplify-appvr-master-84656/2c203980-010f-11ed-ad3f-122e7453d9fd",
+      "AmplifyAppId": "d3o5i5mwkns0gl"
+    },
+    "categories": {
+      "auth": {
+        "userPoolGroups": {},
+        "AuthCognito": {}
+      },
+      "function": {
+        "AdminQueries0ab6d7b2": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/AdminQueries0ab6d7b2-34706c76496d482f6474-build.zip"
+        },
+        "AdminCreateUser": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/AdminCreateUser-6d3746686d6a71483235-build.zip"
+        },
+        "AdminAddUserToGroup": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/AdminAddUserToGroup-50793048756848334f77-build.zip"
+        },
+        "AdminDeleteUser": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/AdminDeleteUser-3155586141696a423345-build.zip"
+        },
+        "SignedUrl": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/SignedUrl-38575656633374596752-build.zip"
+        }
+      },
+      "video": {
+        "vod": {
+          "s3UUID": "09wx5z28"
+        }
+      }
+    }
+  }
+}

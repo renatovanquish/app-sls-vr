@@ -1,0 +1,1178 @@
+enum UserStatus {
+  DEFAULT
+  PREREGISTER
+  SUSPENDED
+  ACTIVE
+}
+
+type User 
+  @model(
+    mutations: {create: "createUser", update: "updateUser", delete: "deleteUser"}, 
+    queries: {get: "getUser", list: "listUsers"}, 
+    subscriptions: null
+    ) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "id"}, 
+    {allow: private, provider: userPools, operations: [read, create]}, 
+    {allow: public, provider: apiKey, operations: [read, update, create, delete]}
+    ]) {
+  id: ID! @primaryKey
+  name: String!
+  email: AWSEmail @index(name: "userByEmail", queryField: "getUserByEmail")
+  phone: AWSPhone @index(name: "userByPhone", queryField: "getUserByPhone")
+  status: UserStatus @index(name: "usersByStatusCreatedAt", queryField: "listUsersByStatusCreatedAt", sortKeyFields: ["createdAt"])
+  active: Boolean
+  avatar: String
+  search: String
+  createdAt: AWSDateTime
+  profile: Profile @hasOne(fields: ["id"])
+  groups: [GroupUser] @hasMany(indexName: "groupsByUser", fields: ["id"])
+  logs: [Log] @hasMany(indexName: "logsByUser", fields: ["id"])
+  addresses: [Address] @hasMany(indexName: "addressesByUser", fields: ["id"])
+  payMethods: [PayMethod] @hasMany(indexName: "payMethodsByUser", fields: ["id"])
+  relationsLink: [RelationLink] @hasMany(indexName: "relationsLinkByUser", fields: ["id"])
+  carts: [Cart] @hasMany(indexName: "cartsByUser", fields: ["id"])
+  ordersByCreatedAt: [Order] @hasMany(indexName: "ordersByUserCreatedAt", fields: ["id"])
+  ordersByStatusCreatedAt: [Order] @hasMany(indexName: "ordersByUserStatusCreatedAt", fields: ["id"])
+}
+
+enum GenderOptions {
+  M
+  F
+  UNKNOWN
+}
+
+enum DocTypes {
+  CPF
+  CNPJ
+  PASSPORT
+}
+
+type Profile 
+  @model(
+    mutations: {create: "createProfile", update: "updateProfile", delete: "deleteProfile"}, 
+    queries: {get: "getProfile", list: null}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID", operations: [create, update, delete, read]}, 
+    {allow: groups, provider: userPools, groups: ["Admin"], operations: [read]}, 
+    {allow: private, provider: userPools, operations: [create]}, 
+    {allow: public, provider: apiKey, operations: [read, update, create, delete]}
+  ]) {
+  userID: ID! @primaryKey
+  user: User @hasOne(fields: ["userID"])
+  doc: String
+  docType: DocTypes
+  docProfession: String
+  profession: String
+  specialties: String
+  subSpecialties: String
+  bio: String
+  gender: GenderOptions
+  birth: AWSDate
+  birthDay: String @index(name: "usersByBirthDay", queryField: "listUsersByBirthDay")
+  notes: String
+  urlUserName: String
+  urlEnable: Boolean
+  allowViewEmail: Boolean
+  allowViewPhone: Boolean
+  allowCookiesPreference: Boolean
+  allowCookiesStatistic: Boolean
+  pix: String
+  zipCodeCoverage: [String]
+  schedulesSunday: [String]
+  schedulesMonday: [String]
+  schedulesTuesday: [String]
+  schedulesWednesday: [String]
+  schedulesThursday: [String]
+  schedulesFriday: [String]
+  schedulesSaturday: [String]
+  customerPagarmeID: String
+  uuid: String
+}
+
+
+type GroupUser 
+  @model(
+    mutations: {create: "createGroupUser", update: null, delete: "deleteGroupUser"}, 
+    queries: {get: null, list: "listGroupUsers"}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]}, 
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  group: String! @index(name: "usersByGroup", queryField: "listUsersByGroup", sortKeyFields: ["userID"])
+  userID: ID! @index(name: "groupsByUser", queryField: "listGroupsByUser", sortKeyFields: ["group"])
+  user: User @hasOne(fields: ["userID"])
+  profileID: ID!
+  profile: Profile @hasOne(fields: ["profileID"])
+  createdAt: AWSDateTime
+}
+
+
+type Address 
+  @model(
+    mutations: {create: "createAddress", update: "updateAddress", delete: "deleteAddress"}, 
+    queries: {get: "getAddress", list: "listAddresses"}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID", operations: [create, update, delete, read]}, 
+    {allow: groups, provider: userPools, groups: ["Admin"], operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read, update, create]}
+    ]) {
+  id: ID! @primaryKey
+  userID: ID! @index(name: "addressesByUser", queryField: "listAddressesByUser")
+  name: String
+  reference: String
+  street: String
+  number: String
+  complement: String
+  zipcode: String
+  neighborhood: String
+  city: String
+  state: String
+  country: String
+  addressPagarmeID: String
+}
+
+enum PaymentMethods {
+  CREDIT
+  DEBIT
+  PIX
+  ONDELIVERY
+}
+
+type PayMethod 
+  @model(
+    mutations: {create: "createPayMethod", update: "updatePayMethod", delete: "deletePayMethod"}, 
+    queries: {get: "getPayMethod", list: "listPayMethods"}, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID", operations: [create, update, delete, read]}, 
+    {allow: groups, provider: userPools, groups: ["Admin"], operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read, update, create]}
+  ]) {
+  id: ID! @primaryKey
+  userID: ID! @index(name: "payMethodsByUser", queryField: "listPayMethodsByUser")
+  method: PaymentMethods!
+  number: String
+  holderName: String
+  holderDocument: String
+  expMonth: Int
+  expYear: Int
+  cvv: String
+  brand: String
+  label: String
+  cardPagarmeID: String
+}
+
+enum LogSource {
+  APP
+}
+
+type Log @model(mutations: {create: "createLog", update: null, delete: null}, queries: {get: null, list: "listLogs"}, subscriptions: null) 
+@auth(rules: [
+  {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID", operations: [create, read]}, 
+  {allow: groups, provider: userPools, groups: ["Admin"], operations: [read]}, 
+  {allow: public, provider: apiKey, operations: [create, read]}, 
+  {allow: private, operations: [update, delete]}
+  ]) {
+  id: ID! @primaryKey
+  userID: ID! @index(name: "logsByUser", queryField: null) @index(name: "logsByUserCreatedAt", queryField: "listLogsByUserCreatedAt", sortKeyFields: ["createdAt"]) @index(name: "logsByUserTagCreatedAt", queryField: "listLogsByUserTagCreatedAt", sortKeyFields: ["tag", "createdAt"])
+  tag: String! @index(name: "logsByTagCreatedAt", queryField: "listLogsByTagCreatedAt", sortKeyFields: ["createdAt"])
+  source: LogSource! @index(name: "logsBySourceCreatedAt", queryField: "listLogsBySourceCreatedAt", sortKeyFields: ["createdAt"])
+  notes: String
+  message: String
+  page: String
+  manufacturer: String
+  model: String
+  osName: String
+  osVersion: String
+  platform: String
+  uuid: String
+  ip: String
+  city: String
+  region: String
+  country: String
+  provider: String
+  lat: Float
+  lng: Float
+  createdAt: AWSDateTime
+  user: User @belongsTo(fields: ["userID"])
+}
+
+enum ConfigValidationModes {
+  CODE
+  LINK
+}
+
+type Config 
+  @model(
+    mutations: {create: "createConfig", update: "updateConfig", delete: null}, 
+    queries: {get: "getConfig", list: null}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]}, 
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  validationMode: ConfigValidationModes!
+  googleAnalyticsID: String
+  googleSiteVerification: String
+  facebook: String
+  twitter: String
+  instagram: String
+  youtube: String
+  linkedin: String
+  infoFooter: String
+  minValueOrder: Float
+  phoneOrders: AWSPhone
+  phoneSac: AWSPhone
+  phoneWhatsapp: AWSPhone
+  allowPayOnDelivery: Boolean
+  allowLocalPickup: Boolean
+  deliveryOnSunday: AWSTime
+  deliveryOnMonday: AWSTime
+  deliveryOnTuesday: AWSTime
+  deliveryOnWednesday: AWSTime
+  deliveryOnThursday: AWSTime
+  deliveryOnFriday: AWSTime
+  deliveryOnSaturday: AWSTime
+  deliveryOffSunday: AWSTime
+  deliveryOffMonday: AWSTime
+  deliveryOffTuesday: AWSTime
+  deliveryOffWednesday: AWSTime
+  deliveryOffThursday: AWSTime
+  deliveryOffFriday: AWSTime
+  deliveryOffSaturday: AWSTime
+  showNotesCart: Boolean
+  notesCart: String
+  soundOnNewOrder: Boolean
+  birthDayEnable: Boolean
+  birthDaySubject: String
+  birthDayMessage: String
+  footer: String
+  navBar: String
+}
+
+enum InviteStatus {
+  SENT
+  CANCELED
+  ACCEPTED
+}
+
+type Invite @model(mutations: {create: "createInvite", update: "updateInvite", delete: "deleteInvite"}, queries: {get: "getInvite", list: "listInvites"}, subscriptions: null) @auth(rules: [{allow: groups, provider: userPools, groups: ["Admin"]}, {allow: private, provider: userPools, operations: [read]}, {allow: public, provider: apiKey, operations: [read, update]}]) {
+  id: ID! @primaryKey
+  name: String!
+  description: String
+  email: String @index(name: "InvitesByEmail", queryField: "listInvitesByEmail")
+  phone: String @index(name: "InvitesByPhone", queryField: "listInvitesByPhone")
+  groups: [String]
+  status: InviteStatus! @index(name: "InvitesByStatus", queryField: "listInvitesByStatusCreatedAt", sortKeyFields: ["createdAt"])
+  createdAt: AWSDateTime
+}
+
+type DataBase 
+  @model(
+    mutations: {create: "createDataBase", update: "updateDataBase", delete: "deleteDataBase"}, 
+    queries: {get: null, list: "listDataBases"}, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]}, 
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read, create]}
+  ])
+  {
+  id: ID! @primaryKey
+  name: String! @index(name: "dataBasesByName", queryField: "listDataBasesByName")
+  items: [DataBaseItem] @hasMany(indexName: "itemsByDataBase", fields: ["id"])
+}
+
+enum DataBaseItemStatus {
+  REJECTED
+  APPROVED
+  STANDBY
+}
+
+type DataBaseItem
+  @model(
+    mutations: {create: "createDataBaseItem", update: "updateDataBaseItem", delete: "deleteDataBaseItem"}, 
+    queries: {get: null, list: null}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]}, 
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID", operations: [create, update, delete, read]}, 
+    {allow: public, provider: apiKey, operations: [read, create]}
+  ]) {
+  id: ID! @primaryKey
+  dataBaseID: ID! @index(name: "itemsByDataBase", queryField: "listItemsByDataBaseCreatedAt", sortKeyFields: ["createdAt"])
+  userID: ID! @index(name: "itemsByUser", queryField: "listItemsByUserCreatedAt", sortKeyFields: ["createdAt"])
+  user: User @hasOne(fields: ["userID"])
+  data: String!
+  status: DataBaseItemStatus!
+  search: String
+  notes: String
+  createdAt: AWSDateTime
+}
+
+type Folder @model(mutations: {create: "createFolder", update: "updateFolder", delete: "deleteFolder"}, queries: {get: null, list: "listFolders"}, subscriptions: null) @auth(rules: [{allow: groups, provider: userPools, groups: ["Admin"]}, {allow: private, provider: userPools, operations: [read]}]) {
+  id: ID! @primaryKey
+  name: String! @index(name: "foldersByName", queryField: "listFoldersByName")
+}
+
+enum MidiaTypes {
+  AUDIO
+  VIDEO
+  IMAGE
+  PDF
+  DOC
+  XLS
+  FILE
+  ZIP
+}
+
+type Midia @model(mutations: {create: "createMidia", update: "updateMidia", delete: "deleteMidia"}, queries: {get: null, list: "listMidias"}, subscriptions: null) @auth(rules: [{allow: groups, provider: userPools, groups: ["Admin"]}, {allow: private, provider: userPools, operations: [read]}, {allow: public, provider: apiKey, operations: [read]}]) {
+  id: ID! @primaryKey
+  key: String! @index(name: "MidiaByKey", queryField: "listMidiaByKey")
+  type: MidiaTypes
+  title: String
+  subTitle: String
+  description: String
+  link: String
+  identifyText: String
+}
+
+enum RelationModes {
+  PRIVATE
+  GROUP
+}
+
+type Favorite 
+  @model(
+    mutations: {create: "createFavorite", update: "updateFavorite", delete: "deleteFavorite"}, 
+    queries: {get: null, list: "listFavorites"}, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID"}, 
+    {allow: groups, provider: userPools, groups: ["Admin"]},  
+    {allow: public, provider: apiKey, operations: [read, update, delete, create]}
+  ]) {
+  id: ID! @primaryKey
+  userID: ID! @index(name: "favoritesByUserType", queryField: "listFavoritesByUserType", sortKeyFields: ["type"])
+  user: User @hasOne(fields: ["userID"])
+  type: String!
+  favoriteID: String! @index(name: "favoritesByFavoriteIDUser", queryField: "listFavoritesByFavoriteIDUser", sortKeyFields: ["userID"])
+  link: String!
+  content: String
+  productID: ID
+  product: Product @hasOne(fields: ["productID"])
+  relationID: ID
+  relation: Relation @hasOne(fields: ["relationID"])
+  pageID: ID
+  page: Page @hasOne(fields: ["pageID"])
+}
+
+type Relation 
+  @model(
+    mutations: {create: "createRelation", update: "updateRelation", delete: "deleteRelation"}, 
+    queries: {get: "getRelation", list: "listRelations"}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", ownerField: "members", operations: [read]}, 
+    {allow: owner, identityClaim: "username", ownerField: "admins", operations: [create, delete, update, read]}, 
+    {allow: public, provider: apiKey, operations: [read, create, delete, update]}
+  ]) {
+  id: ID! @primaryKey
+  type: String! @index(name: "relationsByTypeUpdatedAt", queryField: "listRelationsByTypeUpdatedAt", sortKeyFields: ["updatedAt"]) @index(name: "relationsByTypeModeUpdatedAt", queryField: "listRelationsByTypeModeUpdatedAt", sortKeyFields: ["mode", "updatedAt"]) @index(name: "relationsByTypeStatusUpdatedAt", queryField: "listRelationsByTypeStatusUpdatedAt", sortKeyFields: ["status", "updatedAt"])
+  mode: RelationModes!
+  name: String
+  description: String
+  avatar: String
+  reference: String
+  members: [String!]!
+  admins: [String!]!
+  updatedAt: AWSDateTime
+  status: String! @index(name: "relationsByStatusUpdatedAt", queryField: "listRelationsByStatusUpdatedAt", sortKeyFields: ["updatedAt"]) @index(name: "relationsByStatusTypeName", queryField: "listRelationsByStatusTypeName", sortKeyFields: ["type", "name"])
+  search: String
+  config: String
+  relationsLink: [RelationLink] @hasMany(indexName: "relationsLinkByRelation", fields: ["id"])
+  messages: [Message] @hasMany(indexName: "messagesByRelation", fields: ["id"])
+  schedules: [Schedule] @hasMany(indexName: "schedulesByRelation", fields: ["id"])
+  documents: [Document] @hasMany(indexName: "documentsByRelation", fields: ["id"])
+  restrictedContents: [RestrictedContent] @hasMany(indexName: "restrictedContentsByRelation", fields: ["id"])
+}
+
+type RelationLink 
+  @model(
+    mutations: {create: "createRelationLink", update: "updateRelationLink", delete: "deleteRelationLink"}, 
+    queries: {get: null, list: "listRelationsLink"}, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID"}, 
+    {allow: public, provider: apiKey, operations: [create, delete, update, read]}
+  ]) {
+  id: ID! @primaryKey
+  userID: ID! @index(name: "relationsLinkByUser") @index(name: "relationsLinkByUserTypeNotifyUpdatedAt", queryField: "listRelationsLinkByUserTypeNotifyUpdatedAt", sortKeyFields: ["type", "notify", "updatedAt"])
+  user: User @belongsTo(fields: ["userID"])
+  relationID: ID! @index(name: "relationsLinkByRelation") @index(name: "relationsLinkByRelationUser", queryField: "listRelationsLinkByRelationUser", sortKeyFields: ["userID"])
+  relation: Relation @belongsTo(fields: ["relationID"])
+  type: String!
+  notify: Int!
+  updatedAt: AWSDateTime
+  search: String
+  percentage: Int
+}
+
+type Notify 
+  @model(
+    mutations: {create: "createNotify", update: null, delete: "deleteNotify"}, 
+    queries: {get: null, list: null}, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID"}, 
+    {allow: public, provider: apiKey, operations: [create, delete, read]}
+  ]) {
+  id: ID! @primaryKey
+  userID: ID! @index(name: "notifyByUserDate", queryField: "notifyByUserDate", sortKeyFields: ["date"])
+  date: AWSDateTime!
+  content: String
+  link: String
+  viewed: Boolean
+}
+
+
+enum MessagesTypes {
+  ALERT
+  TEXT
+  AUDIO
+  VIDEO
+  IMAGE
+  LOCATION
+  PDF
+  FORM
+}
+
+type Message 
+  @model(
+    mutations: {create: "createMessage", update: "updateMessage", delete: "deleteMessage"}, 
+    queries: null, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID"}, 
+    {allow: public, provider: apiKey, operations: [create, delete, read, update]}, 
+    {allow: private, operations: [update]}
+  ]) {
+  id: ID! @primaryKey
+  relationID: ID @index(name: "messagesByRelation") @index(name: "messagesByRelationCreatedAt", queryField: "listMessagesByRelationCreatedAt", sortKeyFields: ["createdAt"])
+  relation: Relation @belongsTo(fields: ["relationID"])
+  restrictedContentID: ID @index(name: "messagesByRestrictedContent") @index(name: "messagesByRestrictedContentCreatedAt", queryField: "listMessagesByRestrictedContentCreatedAt", sortKeyFields: ["createdAt"])
+  restrictedContent: RestrictedContent @belongsTo(fields: ["restrictedContentID"])
+  userID: ID! @index(name: "messagesByUser") @index(name: "messagesByUserCreatedAt", queryField: "listMessagesByUserCreatedAt", sortKeyFields: ["createdAt"])
+  user: User @hasOne(fields: ["userID"])
+  type: MessagesTypes!
+  content: String
+  search: String
+  identityId: String
+  createdAt: AWSDateTime
+  status: String @index(name: "messagesByStatusRelationCreatedAt", queryField: "listMessagesByStatusRelationCreatedAt", sortKeyFields: ["relationID", "createdAt"])
+}
+
+enum ScheduleFrequencies {
+  NONE
+  WEEK
+  MONTHLY
+  QUARTERLY
+  SEMIANNUAL
+  ANNUAL
+}
+
+type Schedule 
+  @model(
+    mutations: {create: "createSchedule", update: "updateSchedule", delete: "deleteSchedule"}, 
+    queries: null, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID"}, 
+    {allow: public, provider: apiKey, operations: [create, delete, read, update]}, 
+    {allow: private, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  relationID: ID! @index(name: "schedulesByRelation") @index(name: "schedulesByRelationDateTime", queryField: "listSchedulesByRelationDateTime", sortKeyFields: ["dateTime"])
+  userID: ID! @index(name: "schedulesByUser") @index(name: "schedulesByUserCreatedAt", queryField: "listSchedulesByUserCreatedAt", sortKeyFields: ["createdAt"])
+  dateTime: AWSDateTime
+  title: String
+  description: String
+  link: String
+  frequency: ScheduleFrequencies
+  createdAt: AWSDateTime
+  viewType: String
+  user: User @hasOne(fields: ["userID"])
+  relation: Relation @belongsTo(fields: ["relationID"])
+}
+
+type Document 
+@model(mutations: {create: "createDocument", update: "updateDocument", delete: "deleteDocument"}, queries: {get: "getDocument", list: null}, subscriptions: null) 
+@auth(rules: [{allow: owner, identityClaim: "username", provider: userPools, ownerField: "ownerID"}, {allow: private, provider: userPools, operations: [read, create]}, {allow: public, provider: apiKey, operations: [create, read, update]}]) {
+  id: ID! @primaryKey
+  relationID: ID! @index(name: "documentsByRelation") @index(name: "documentsByRelationUpdatedAt", queryField: "listDocumentsByRelationUpdatedAt", sortKeyFields: ["updatedAt"])
+  ownerID: ID! @index(name: "documentsByOwner") @index(name: "documentsByOwnerUpdatedAt", queryField: "listDocumentsByOwnerUpdatedAt", sortKeyFields: ["updatedAt"])
+  title: String
+  description: String
+  notes: String
+  conclusion: String
+  content: String
+  fileKey: String
+  identityId: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  relation: Relation @belongsTo(fields: ["relationID"])
+  owner: User @hasOne(fields: ["ownerID"])
+}
+
+enum RestrictedContentTypes {
+  TEXT
+  AUDIO
+  VIDEO
+  IMAGE
+  PDF
+}
+
+type RestrictedContent 
+  @model(
+    mutations: {create: "createRestrictedContent", update: "updateRestrictedContent", delete: "deleteRestrictedContent"}, 
+    queries: {get: "getRestrictedContent", list: null}, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups:["Admin"], operations: [create, update, delete, read]},
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  relationID: ID! @index(name: "restrictedContentsByRelation") @index(name: "restrictedContentsByRelationOrder", queryField: "listRestrictedContentsByRelationOrder", sortKeyFields: ["order"])
+  order: Int!
+  group: String
+  subGroup: String
+  title: String
+  description: String
+  notes: String
+  type: RestrictedContentTypes!
+  isAWSVDO: Boolean
+  thumbnail: String
+  content: String
+  search: String
+  identityId: String
+  lifetime: String
+  start: String
+  expiration: String
+  percentage: Int
+  video: VideoObject @hasOne(fields: ["id"])
+  relation: Relation @belongsTo(fields: ["relationID"])
+  view: [RestrictedContentView] @hasMany(indexName: "restrictedContentViewByRestrictedContent", fields: ["id"])
+  messages: [Message] @hasMany(indexName: "messagesByRestrictedContent", fields: ["id"])
+}
+
+type RestrictedContentView 
+  @model(
+    mutations: {create: "createRestrictedContentView", update: "updateRestrictedContentView", delete: null}, 
+    queries: {get: null, list: null}, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [create, read, update]}
+  ]) {
+  id: ID! @primaryKey
+  restrictedContentID: ID! 
+    @index(name: "restrictedContentViewByRestrictedContent", queryField: "listRestrictedContentViewByRestrictedContent") 
+    @index(name: "restrictedContentViewByRestrictedContentUser", queryField: "listRestrictedContentViewByRestrictedContentUser", sortKeyFields: ["userID"])
+  userID: ID! @index(name: "restrictedContentViewByUser", queryField: "listRestrictedContentViewByUser")
+  percentage: Int
+  rating: Int
+  restrictedContent: RestrictedContent @belongsTo(fields: ["restrictedContentID"])
+  user: User @hasOne(fields: ["userID"])
+}
+
+type Menu @model(mutations: {create: "createMenu", update: "updateMenu", delete: "deleteMenu"}, queries: {get: "getMenu", list: "listMenus"}, subscriptions: null) @auth(rules: [{allow: groups, provider: userPools, groups: ["Admin"]}, {allow: private, provider: userPools, operations: [read]}, {allow: public, provider: apiKey, operations: [read]}]) {
+  id: ID! @primaryKey
+  alias: String! @index(name: "menusByAliasOrder", queryField: "listMenusByAliasOrder", sortKeyFields: ["order"])
+  order: Int!
+  title: String
+  description: String
+  orderDesc: Boolean
+  thumbnail: String
+  thumbnailSrc: String
+  thumbnailCropper: String
+  showDescriptionPage: String
+  showThumbnailPage: String
+  hide: Boolean
+}
+
+enum PageType {
+  CONTENT
+  COMMERCE
+}
+
+enum PageStatus {
+  ON
+  OFF
+}
+
+enum PageChangeFreq {
+  NEVER
+  YEARLY
+  MONTHLY
+  WEEKLY
+  DAILY
+  HOURLY
+  ALWAYS
+}
+
+enum PagePriority {
+  P0
+  P1
+  P2
+  P3
+  P4
+  P5
+  P6
+  P7
+  P8
+  P9
+  P10
+}
+
+enum PageOptionTitle {
+  L
+  R
+  C
+  N
+}
+
+enum PageSideColumn {
+  L
+  R
+  N
+}
+
+enum PageOptionSideColumn {
+  CART_CONTENT_TAGS
+  CART_CONTENT
+  CONTENT_CART
+  MENU_CONTENT_TAGS
+  MENU_CONTENT
+  TAGS_CONTENT
+  CONTENT_MENU_TAGS
+  CONTENT_MENU
+  CONTENT_TAGS
+  CONTENT_BACK
+  BACK_CONTENT
+}
+
+type Page @model(mutations: {create: "createPage", update: "updatePage", delete: "deletePage"}, queries: {get: "getPage", list: "listPages"}, subscriptions: null) 
+@auth(rules: [
+  {allow: groups, provider: userPools, groups: ["Admin"]}, 
+  {allow: private, provider: userPools, operations: [read]}, 
+  {allow: public, provider: apiKey, operations: [read, create]}
+  ]) {
+  id: ID! @primaryKey
+  alias: String! @index(name: "pagesByAliasCreatedAt", queryField: "listPagesByAliasCreatedAt", sortKeyFields: ["createdAt"])
+  status: PageStatus! @index(name: "pagesByStatusMenuOrder", queryField: "listPagesByStatusMenuOrder", sortKeyFields: ["menu", "order"])
+  type: PageType!
+  menu: ID! @index(name: "pagesByMenuOrder", queryField: "listPagesByMenuOrder", sortKeyFields: ["order"])
+  menuProps: Menu @hasOne(fields: ["menu"])
+  order: Int!
+  title: String!
+  titlePadX: String
+  titlePadY: String
+  description: String
+  content: String
+  contentPadX: String
+  contentPadY: String
+  tags: [String]
+  thumbnail: String
+  thumbnailSrc: String
+  thumbnailCropper: String
+  changeFreq: PageChangeFreq
+  priority: PagePriority
+  optionTitle: PageOptionTitle
+  sideColumn: PageSideColumn
+  sideColumnPadX: String
+  sideColumnPadY: String
+  sideColumnContent: String
+  optionSideColumn: PageOptionSideColumn
+  footerSm: String
+  footerLg: String
+  hideInMenu: Boolean
+  createdAt: AWSDateTime
+  search: String
+  blocks: [Block] @hasMany(indexName: "blocksByPage", fields: ["id"])
+}
+
+type Block 
+  @model(
+    mutations: {create: "createBlock", update: "updateBlock", delete: "deleteBlock"}, 
+    queries: {get: "getBlock", list: "listBlocks"}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]},
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  pageID: ID! @index(name: "blocksByPage", queryField: "listBlocksByPage") @index(name: "blocksByPageOrder", queryField: "listBlocksByPageOrder", sortKeyFields: ["order"])
+  order: Int!
+  component: String!
+  content: String!
+  config: String
+  page: Page @belongsTo(fields: ["pageID"])
+}
+
+type Category 
+  @model(
+    mutations: {create: "createCategory", update: "updateCategory", delete: "deleteCategory"}, 
+    queries: {get: "getCategory", list: "listCategories"}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]}, 
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  alias: String! @index(name: "categoryByAliasOrder", queryField: "listCategoryByAliasOrder", sortKeyFields: ["order"])
+  order: Int!
+  title: String
+  description: String
+  thumbnail: String
+  thumbnailSrc: String
+  thumbnailCropper: String
+  hide: Boolean
+  isSub: Boolean
+}
+
+type Product 
+  @model(
+    mutations: {create: "createProduct", update: "updateProduct", delete: "deleteProduct"}, 
+    queries: {get: "getProduct", list: "listProducts"}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]}, 
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  alias: String! @index(name: "productsByAliasCreatedAt", queryField: "listProductsByAliasCreatedAt", sortKeyFields: ["createdAt"])
+  status: PageStatus! @index(name: "productsByStatusCategoryName", queryField: "listProductsByStatusCategoryName", sortKeyFields: ["category", "name"])
+  category: ID! @index(name: "productsByCategorySubCategoryName", queryField: "listProductsByCategorySubCategoryName", sortKeyFields: ["subCategory", "name"])
+  categoryProps: Category @hasOne(fields: ["category"])
+  subCategory: ID!
+  subCategoryProps: Category @hasOne(fields: ["subCategory"])
+  type: String
+  relationID: ID
+  preparationTime: Int
+  code: String
+  name: String!
+  description: String
+  contentTitle: String
+  contentTitle2: String
+  contentTitle3: String
+  content: String
+  content2: String
+  content3: String
+  tags: [String]
+  changeFreq: PageChangeFreq
+  priority: PagePriority
+  price_of: Float
+  price: Float!
+  qty: Int
+  stockControl: Boolean
+  photo1: String
+  photo2: String
+  photo3: String
+  photo4: String
+  photo5: String
+  thumbnail: String
+  thumbnailSrc: String
+  thumbnailCropper: String
+  titlePadX: String
+  titlePadY: String
+  contentPadX: String
+  contentPadY: String
+  optionTitle: PageOptionTitle
+  sideColumn: PageSideColumn
+  sideColumnPadX: String
+  sideColumnPadY: String
+  sideColumnContent: String
+  optionSideColumn: PageOptionSideColumn
+  footerSm: String
+  footerLg: String
+  hideInMenu: Boolean
+  createdAt: AWSDateTime
+  search: String
+  hideInSearch: Boolean
+  options: [Option] @hasMany(indexName: "optionsByProduct", fields: ["id"])
+}
+
+type Option 
+  @model(
+    mutations: {create: "createOption", update: "updateOption", delete: "deleteOption"}, 
+    queries: {get: "getOption", list: "listOptions"}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]}, 
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  productID: ID! @index(name: "optionsByProduct", queryField: "listOptionsByProduct")
+  name: String
+  price: Float
+}
+
+type Cart 
+  @model(
+    mutations: {create: "createCart", update: "updateCart", delete: "deleteCart"}, 
+    queries: {get: null, list: "listCarts"}, 
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]},  
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID", operations: [create, update, delete, read]},
+    {allow: public, provider: apiKey, operations: [read, update, create]}
+  ]) {
+  id: ID! @primaryKey
+  userID: ID! @index(name: "cartsByUser", queryField: "listCartsByUser")
+  productID: ID!
+  product: Product @hasOne(fields: ["productID"])
+  options: [CartOption] @hasMany(indexName: "optionsByCart", fields: ["id"])
+  qty: Int
+  changeName: String
+  changeDescription: String
+  changeQtyBlend: Int
+  changePriceAdjustment: String
+  blendID: ID
+}
+
+type CartOption 
+  @model(
+    mutations: {create: "createCartOption", update: "updateCartOption", delete: "deleteCartOption"}, 
+    queries: {get: null, list: null}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]},  
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID", operations: [create, update, delete, read]},
+    {allow: public, provider: apiKey, operations: [read, update, create]}
+  ]) {
+  id: ID! @primaryKey
+  cartID: ID! @index(name: "optionsByCart", queryField: "listOptionsByCart")
+  optionID: ID!
+  option: Option @hasOne(fields: ["optionID"])
+}
+
+enum OrderStatus {
+  STANDBY
+  CANCELED
+  REJECTED
+  APPROVED
+  IN_PREPARATION
+  IN_TRANSIT
+  DELIVERED
+}
+
+type Order 
+  @model 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"], operations: [create, update, delete, read]}, 
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID", operations: [create, update, delete, read]},
+    {allow: public, provider: apiKey, operations: [read, update, create]}
+  ]) {
+  id: ID! @primaryKey
+  userID: ID! @index(name: "ordersByUserStatusCreatedAt", sortKeyFields: ["status", "createdAt"], queryField: "listOrdersByUserStatusCreatedAt") @index(name: "ordersByUserCreatedAt", sortKeyFields: ["createdAt"], queryField: "listOrdersByUserCreatedAt")
+  user: User @hasOne(fields: ["userID"])
+  status: OrderStatus! @index(name: "ordersByStatusCreatedAt", sortKeyFields: ["createdAt"], queryField: "listOrdersByStatusCreatedAt")
+  createdAt: AWSDateTime
+  items: [OrderItem] @hasMany(indexName: "itemsByOrder", fields: ["id"])
+  couponID: ID
+  couponName: String
+  couponDiscount: Float
+  deliveryPrice: Float
+  total: Float
+  rating: Int
+  ratingNotes: String
+  orderPagarmeID: String
+  addressReference: String
+  addressStreet: String
+  addressNumber: String
+  addressComplement: String
+  addressZipcode: String
+  addressNeighborhood: String
+  addressCity: String
+  addressState: String
+  addressCountry: String
+  notes: String
+  qrCodePix: String
+  qrCodePixUrl: String
+  payMethod: PaymentMethods
+}
+
+type OrderItem
+  @model(
+    mutations: {create: "createOrderItem", update: "updateOrderItem", delete: "deleteOrderItem"}, 
+    queries: {get: null, list: null}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]},  
+    {allow: private, provider: userPools, operations: [read, update, create, delete]}, 
+    {allow: public, provider: apiKey, operations: [read, update, create, delete]}
+  ]) {
+  id: ID! @primaryKey
+  orderID: ID! @index(name: "itemsByOrder", queryField: "listItemsByOrder")
+  productID: ID!
+  product: Product @hasOne(fields: ["productID"])
+  optionsItem: [OrderItemOption] @hasMany(indexName: "optionsByOrderItem", fields: ["id"])
+  qty: Int!
+  code: String
+  name: String!
+  description: String
+  price: Float!
+  photo1: String
+  changeName: String
+  changeDescription: String
+  changeQtyBlend: Int
+  changePriceAdjustment: String
+  blendID: ID
+  changeNameAdmin: String
+}
+
+type OrderItemOption 
+  @model(
+    mutations: {create: "createOrderItemOption", update: "updateOrderItemOption", delete: "deleteOrderItemOption"}, 
+    queries: {get: null, list: null}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]},  
+    {allow: private, provider: userPools, operations: [read, update, create, delete]}, 
+    {allow: public, provider: apiKey, operations: [read, update, create, delete]}
+  ]) {
+  id: ID! @primaryKey
+  orderItemID: ID! @index(name: "optionsByOrderItem", queryField: "listOptionsByOrderItem")
+  optionID: ID!
+  option: Option @hasOne(fields: ["optionID"])
+}
+
+enum DeliveryStatus {
+  FORESEEN
+  NEEDS_ACTION
+  CONFIRMED
+  BLOCKED
+}
+
+type Coupon 
+  @model(
+    mutations: {create: "createCoupon", update: "updateCoupon", delete: "deleteCoupon"}, 
+    queries: {get: "getCoupon", list: "listCoupons"}, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]}, 
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read, update]}
+  ]) {
+  id: ID! @primaryKey
+  name: String!
+  description: String
+  code: String! @index(name: "couponsByCode", queryField: "listCouponsByCode")
+  start: AWSDate
+  expiration: AWSDate
+  discountPercentage: Int
+  discountValue: Float
+  qtyLimit: Int
+  qtyUsed: Int
+  qtyProduct: Int
+  qtyProductUsed: Int
+  search: String
+  products: [CouponProduct] @hasMany(indexName: "productsByCoupon", fields: ["id"])
+  couponUsed: [CouponUsed] @hasMany(indexName: "usedByCoupon", fields: ["id"])
+}
+
+type CouponProduct
+  @model(
+    mutations: {create: "createCouponProduct", update: "updateCouponProduct", delete: "deleteCouponProduct"}, 
+    queries: {get: null, list: null}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]},  
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read, update, create, delete]}
+  ]) {
+  id: ID! @primaryKey
+  couponID: ID! @index(name: "productsByCoupon", queryField: "listProductsByCoupon")
+  productID: ID!
+  price: Float 
+  limit: Int
+  product: Product @hasOne(fields: ["productID"])
+} 
+
+type CouponUsed 
+  @model(
+    mutations: {create: "createCouponUsed", update: null, delete: null}, 
+    queries: {get: null, list: null}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read, create]}
+  ]) {
+  id: ID! @primaryKey
+  couponID: ID! @index(name: "usedByCoupon", queryField: "listUsedByCoupon") @index(name: "usedByCouponUser", queryField: "listUsedByCouponUser", sortKeyFields: ["userID"])
+  coupon: Coupon @belongsTo(fields: ["couponID"])
+  userID: ID! 
+  user: User @hasOne(fields: ["userID"])
+  qty: Int
+}
+
+type DeliveryOrder
+  @model(
+    mutations: {create: "createDeliveryOrder", update: "updateDeliveryOrder", delete: "deleteDeliveryOrder"}, 
+    queries: {get: null, list: "listDeliveryOrders"}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]}, 
+    {allow: public, provider: apiKey, operations: [read, update, create, delete]}
+  ]) {
+  id: ID! @primaryKey 
+  orderID: ID! @index(name: "deliveryByOrder", queryField: "listDeliveryByOrder")
+  order: Order @hasOne(fields: ["orderID"])
+  date: AWSDateTime! @index(name: "deliveryByDate", sortKeyFields: ["deliveryUserID"], queryField: "listDeliveryByDateUser")
+  deliveryUserID: ID! @index(name: "deliveryByUser", sortKeyFields: ["date"], queryField: "listDeliveryByUserDate")
+  deliveryUser: User @hasOne(fields: ["deliveryUserID"])
+  status: DeliveryStatus! @index(name: "deliveryByStatusDate", sortKeyFields: ["date"], queryField: "listDeliveryByStatusDate")
+}
+
+type DeliveryMethodOrder
+  @model(
+    mutations: {create: "createDeliveryMethodOrder", update: "updateDeliveryMethodOrder", delete: "deleteDeliveryMethodOrder"}, 
+    queries: {get: null, list: "listDeliveryMethodOrders"}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]}, 
+    {allow: private, provider: userPools, operations: [read]}, 
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  name: String
+  zipCode: [String]
+  price: Float
+  time: Int
+}
+
+type QrCodeScan  
+  @model(
+    mutations: {create: "createQrCodeScan", update: null, delete: null }, 
+    queries: {get: null, list: null}, 
+    subscriptions: null) 
+  @auth(rules: [
+    {allow: owner, identityClaim: "username", provider: userPools, ownerField: "userID"}, 
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  userID: ID! @index(name: "qrCodeScansByUser", queryField: "listQrCodeScansByUser", sortKeyFields: ["createdAt"])
+  relationID: ID! 
+  uuid: String
+  createdAt: AWSDateTime
+}
+
+enum QuizStatus {
+  ON
+  OFF 
+}
+
+type Quiz 
+  @model(
+    mutations: {create: "createQuiz", update: "updateQuiz", delete: "deleteQuiz"}, 
+    queries: {get: null, list: "listQuiz"}, 
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]},  
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  name: String!
+  description: String
+  search: String
+  questions: [QuizQuestion] @hasMany(indexName: "questionsByQuiz", fields: ["id"])
+  status: QuizStatus! @index(name: "quizByStatus", queryField: "listQuizByStatus")
+}
+
+type QuizQuestion 
+  @model(
+    mutations: {create: "createQuizQuestion", update: "updateQuizQuestion", delete: "deleteQuizQuestion"}, 
+    queries: {get: null, list: null}, 
+    subscriptions: null
+  ) 
+  @auth(rules: [
+    {allow: groups, provider: userPools, groups: ["Admin"]},  
+    {allow: public, provider: apiKey, operations: [read]}
+  ]) {
+  id: ID! @primaryKey
+  quizID: ID! @index(name: "questionsByQuiz", queryField: "listQuestionsByQuiz")
+  question: String!
+  image: String
+  alternativeA: String!
+  alternativeB: String!
+  alternativeC: String
+  alternativeD: String
+  alternativeE: String
+  alternativeCorrect: String!
+  order: Int
+  search: String
+}
+
+type Subscription {
+  onDeleteRelationLink(userID: ID): RelationLink @aws_subscribe(mutations: ["deleteRelationLink"])
+  onCreateRelationLink(userID: ID): RelationLink @aws_subscribe(mutations: ["createRelationLink"])
+  onUpdateRelationLink(userID: ID): RelationLink @aws_subscribe(mutations: ["updateRelationLink"])
+  onCreateMessage(relationID: ID): Message @aws_subscribe(mutations: ["createMessage"])
+  onCreateOrderAdm: Order @aws_subscribe(mutations: ["createOrder"])
+  onCreateLog: Log @aws_subscribe(mutations: ["createLog"])
+  onDeleteFavorite(userID: ID): Favorite @aws_subscribe(mutations: ["deleteFavorite"])
+  onCreateFavorite(userID: ID): Favorite @aws_subscribe(mutations: ["createFavorite"])
+  onCreateQrCodeScan(userID: ID): QrCodeScan @aws_subscribe(mutations: ["createQrCodeScan"])
+}
+
+type Mutation @aws_api_key @aws_cognito_user_pools {
+  adminDeleteUser(id: String): String @function(name: "AdminDeleteUser-${env}")
+  adminCreateUser(name: String, email: String, phone: String, id: String, messageAction: String, passwordLength: Int, resendTempPass: Int, confirmSignUp: Int): String @function(name: "AdminCreateUser-${env}")
+  adminAddUserToGroup(username: String, groups: String): String @function(name: "AdminAddUserToGroup-${env}")
+}
+
+type Query @aws_api_key @aws_cognito_user_pools {
+  SignedUrl(id: String, key: String, bucket: String, region: String, action: String, contentType: String): String @function(name: "SignedUrl-${env}")
+}
+
+type VideoObject @model
+@auth(
+  rules: [
+    {allow: groups, groups:["Admin"], operations: [create, update, delete, read]},
+    {allow: private, operations: [read]}
+  ]
+)
+{
+  id:ID!
+  token: String @function(name: "MediaConvert-${env}-tokenGen")
+}
+                          

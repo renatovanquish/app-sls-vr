@@ -1,0 +1,3 @@
+.root {
+  @apply rounded-t-box text-center md:text-left p-6 bg-accent-2 flex-row justify-center items-center font-medium fixed bottom-0 w-full z-30 transition-all duration-300 ease-out;
+}

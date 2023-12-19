@@ -1,0 +1,75 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "CognitoIdentityPool",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "appsls613f7887",
+    "userPoolName": "UserPoolGroups",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OPTIONAL",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Codigo de autenticacao: {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Codigo de verificacao",
+    "emailVerificationMessage": "Codigo de verificacao: {####}",
+    "defaultPasswordPolicy": true,
+    "passwordPolicyMinLength": "6",
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "AuthCo613f7887_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "authSelections": "identityPoolAndUserPool",
+    "resourceName": "AuthCognito",
+    "serviceName": "Cognito",
+    "useDefault": "manual",
+    "sharedId": "613f7887",
+    "userPoolGroupList": [
+      "Admin"
+    ],
+    "userPoolGroups": true,
+    "usernameAttributes": [
+      "email, phone_number"
+    ],
+    "usernameCaseSensitive": false,
+    "adminQueries": true,
+    "adminQueryGroup": "Admin",
+    "hostedUI": false,
+    "thirdPartyAuth": false,
+    "triggers": {},
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "useEnabledMfas": false,
+    "dependsOn": [],
+    "authProviders": [],
+    "parentStack": {
+      "Ref": "AWS::StackId"
+    },
+    "permissions": []
+  }
+}

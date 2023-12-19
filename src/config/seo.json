@@ -1,0 +1,21 @@
+{
+  "title": "Você Radiologista",
+  "titleTemplate": "Você Radiologista",
+  "description": "Cursos online de Radiologia",
+  "openGraph": {
+    "title": "Você Radiologista",
+    "description": "Cursos online de Radiologia",
+    "type": "website",
+    "locale": "en_IE",
+    "url": "https://vr.d9c4b8rxu656s.amplifyapp.com/",
+    "site_name": "Você Radiologista",
+    "images": [
+      {
+        "url": "/icons/512x512-icon.png",
+        "width": 512,
+        "height": 512,
+        "alt": "Você Radiologista"
+      }
+    ]
+  }
+}

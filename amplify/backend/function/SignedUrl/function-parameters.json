@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "api": {
+      "ApiGraphQL": [
+        "Query",
+        "Mutation"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

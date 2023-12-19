@@ -1,0 +1,36 @@
+.root {
+  @apply relative;
+}
+
+.list {
+  @apply flex flex-row items-center justify-items-end h-full;
+}
+
+.item {
+  @apply mr-4 text-center text-xs cursor-pointer relative transition ease-in-out duration-100 flex items-center outline-none text-primary;
+
+  &:last-child {
+    @apply mr-0;
+  }
+
+  &:focus,
+  &:active {
+    @apply outline-none;
+  }
+}
+
+.link.active {
+  @apply text-blue-500;
+}
+
+.bagCount {
+  @apply border border-accent-1 bg-red-500 text-white h-4 w-4 absolute rounded-full right-0 -top-1 flex items-center justify-center font-bold text-xs;
+}
+
+.avatarButton {
+  @apply inline-flex justify-center rounded-full;
+}
+
+.avatarButton:focus {
+  @apply outline-none;
+}

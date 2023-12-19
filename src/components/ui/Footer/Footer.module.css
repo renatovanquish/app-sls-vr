@@ -1,0 +1,19 @@
+.link {
+  & > svg {
+    @apply mr-2 transform duration-75 ease-linear;
+  }
+
+  &:hover > svg {
+    @apply scale-110;
+  }
+
+  @apply pt-4 md:pt-0 pr-8 font-light flex items-center justify-start text-accent-7 transition ease-in-out duration-150;
+}
+
+.link:hover {
+  @apply text-accent-8;
+}
+
+.link.active {
+  @apply font-bold text-accent-9;
+}

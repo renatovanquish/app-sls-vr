@@ -1,0 +1,7 @@
+.link {
+  @apply w-full text-xs justify-center inline-block text-center py-2;
+}
+
+.link.active {
+  @apply text-tertiary-2;
+}
