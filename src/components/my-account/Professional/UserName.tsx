@@ -110,7 +110,7 @@ export default function UserName(props: any) {
                     onChange={handleUrlUserNameChange}
                     type="text"
                     autoComplete="off"
-                    placeholder=""
+
                     id="urlUserName"
                     name="urlUserName"
                     className="text-accent-9 bg-accent-0 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-accent-2"

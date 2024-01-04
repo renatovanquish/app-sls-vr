@@ -24,7 +24,7 @@ const ConfirmCode: FC<Props> = () => {
     if (loading) {
       return null
     }
-    
+
     if (!dirty && !disabled) {
       setDirty(true)
       handleValidation()
@@ -101,7 +101,7 @@ const ConfirmCode: FC<Props> = () => {
             value={code}
             onChange={setCode}
             type="number"
-            placeholder=""
+
           />
 
           {message && (

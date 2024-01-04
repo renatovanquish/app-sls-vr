@@ -37,7 +37,7 @@ export default function FormPrivate(props: Props) {
   const { createRelationContact, deleteRelation, updateRelation } =
     useRelation()
   const { listRelationsLinkByRelationUser, updateRelationLink, deleteRelationLink } = useRelationLink()
-  
+
   const { isSm } = useBreakPoints()
 
   const {
@@ -149,8 +149,8 @@ export default function FormPrivate(props: Props) {
           status: relation.status,
           mode: relation.mode,
           updatedAt: new Date().toISOString(),
-        }) 
-        
+        })
+
         await updateUser({ id, name, search })
 
         toast('Contato atualizado com sucesso.', {
@@ -189,7 +189,7 @@ export default function FormPrivate(props: Props) {
           }
 
           const { updatedUser, message } = await adminUpdateUser(User)
-          
+
           toast(message.text, {
             backgroundColor: '#263238',
             color: '#fff',
@@ -218,7 +218,7 @@ export default function FormPrivate(props: Props) {
           })
         })
       }
-      
+
       setLoading(false)
       setItemListMode('')
     }
@@ -366,7 +366,7 @@ export default function FormPrivate(props: Props) {
                   }}
                   international={false}
                   defaultCountry="BR"
-                  placeholder=""
+
                 />
               </div>
             </div>

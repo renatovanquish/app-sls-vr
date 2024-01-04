@@ -111,7 +111,7 @@ export default function Edit(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('type')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value="ALL">Todos os tipos</option>
@@ -138,7 +138,7 @@ export default function Edit(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('security')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value="auth">Autenticação Padrão</option>
@@ -172,7 +172,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('thumbnail')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="show">Exibir</option>
@@ -195,7 +195,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('showDescription')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="hide">Não exibir</option>
@@ -221,7 +221,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('showReference')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="hide">Não exibir</option>

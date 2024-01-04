@@ -226,7 +226,7 @@ export default function View(props: Props) {
     toast.info(
       content.message ? content.message : 'Envio realizado com sucesso!'
     )
-    
+
     if (content.action === 'PIPELINE' || content.action === 'CRUDL') {
       const user = await ActionAuth({
         name: userName,
@@ -550,7 +550,7 @@ function AuthFields(props: AuthFieldsProps) {
                   onChange={(e: any) => setUserPhone(e)}
                   international={false}
                   defaultCountry="BR"
-                  placeholder=""
+
                 />
               </div>
             </div>
@@ -668,7 +668,7 @@ function FieldTel(props: PropsFields) {
             onChange={(e: any) => handleChanged(e, idxLine, idxField)}
             international={false}
             defaultCountry="BR"
-            placeholder=""
+
           />
         </div>
       </div>
@@ -880,7 +880,7 @@ function FieldSelect(props: PropsFields) {
             onChange={(event: any) =>
               handleChanged(event.target.value, idxLine, idxField)
             }
-            placeholder=""
+
             className="text-accent-9 bg-accent-1 w-full pl-3 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
           >
             <option>Selecione...</option>
@@ -953,7 +953,7 @@ function FieldFiles(props: PropsFields) {
       ) : (
         <p>Arraste e solte o(s) arquivos aqui ou clique para selecionar ...</p>
       )}
-      
+
     </div>
     {filesUpload && filesUpload.length > 0 && (<div>
       {filesUpload.length === 1 && <div className='font-semibold'>Arquivo selecionado</div>}
@@ -961,7 +961,7 @@ function FieldFiles(props: PropsFields) {
       {filesUpload.map((f:any,k:number)=><div className='test-center' key={k}>{f.path}</div>)}
     </div>)}
   </div>
-    
+
   )
 }
 

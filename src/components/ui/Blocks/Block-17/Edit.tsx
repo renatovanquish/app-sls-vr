@@ -177,7 +177,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('origin')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="category">De uma categoria</option>
@@ -215,7 +215,7 @@ export default function Edit(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('category')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       {categories.map((category: any, idx: number) => (
@@ -241,7 +241,7 @@ export default function Edit(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('linkMode')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value="default">Compra pelo app</option>
@@ -268,7 +268,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('showSubCategoryDesktop')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="hide">Não exibir</option>
@@ -293,7 +293,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('showSubCategoryMobile')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="hide">Não exibir</option>
@@ -326,7 +326,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('thumbnail')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="0">Não exibir</option>
@@ -351,7 +351,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('showDescription')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="hide">Não exibir</option>
@@ -380,7 +380,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('showCode')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="show">Exibir</option>
@@ -403,7 +403,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('textSize')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="default">Padrão</option>
@@ -473,7 +473,7 @@ export default function Edit(props: Props) {
                           <div className="w-10 z-10"></div>
                           <select
                             {...register(`data.${index}.qtyBlend` as const)}
-                            placeholder=""
+
                             className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                           >
                             <option value="1">Nenhuma - Produto inteiro</option>
@@ -503,7 +503,7 @@ export default function Edit(props: Props) {
                             {...register(
                               `data.${index}.priceAdjustment` as const
                             )}
-                            placeholder=""
+
                             className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                           >
                             {formValues &&

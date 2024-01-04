@@ -91,7 +91,7 @@ export default function Edit(props: Props) {
       setValue('linkRedirect', contentParse.linkRedirect)
       setValue('emailTo', contentParse.emailTo)
       setValue('dataBase', contentParse.dataBase)
-      
+
       if (contentParse.groups) {
         const g = [] as any
         ;(process.env.GROUPS as any).map((group: string) => {
@@ -142,7 +142,7 @@ export default function Edit(props: Props) {
 
   const onSubmit = async (data: FormValues) => {
     setLoading(true)
-    
+
     let groupsSel = ''
     groups.map((group: any) => {
       if (group.selected) {
@@ -237,7 +237,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('action')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="ONLYMAIL">
@@ -323,7 +323,7 @@ export default function Edit(props: Props) {
                         <div className="w-10 z-10"></div>
                         <select
                           {...register(`data.${index}.size` as const)}
-                          placeholder=""
+
                           className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                         >
                           <option value="1">1</option>
@@ -356,7 +356,7 @@ export default function Edit(props: Props) {
                         <div className="w-10 z-10"></div>
                         <select
                           {...register(`data.${index}.type` as const)}
-                          placeholder=""
+
                           className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                         >
                           <option value="text">Texto</option>

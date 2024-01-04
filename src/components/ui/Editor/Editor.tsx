@@ -98,7 +98,6 @@ export default function Editor(props: Props) {
         toggleFullScreen={toggleFullScreen}
         setOptions={mode === 'essential' ? ToolBarEssential : ToolBarFull}
         name={fieldName}
-        onImageUploadBefore={handleImageUploadBefore}
       />
     </div>
   ) : (

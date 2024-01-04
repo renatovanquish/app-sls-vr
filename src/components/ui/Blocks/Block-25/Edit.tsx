@@ -115,7 +115,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('align')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="left">A esquerda</option>
@@ -139,7 +139,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('showBar')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="show">Sim</option>
@@ -150,7 +150,7 @@ export default function Edit(props: Props) {
             </div>
           </div>
         </div>
-        
+
       </div>
       <div className="mt-6">
         <Button type="submit" variant="slim" loading={loading} disabled={false}>

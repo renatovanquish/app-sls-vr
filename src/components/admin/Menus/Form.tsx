@@ -339,7 +339,7 @@ export default function FormMenu(props: Props) {
                         <div className="w-10 z-10"></div>
                         <select
                           {...register('orderDesc')}
-                          placeholder=""
+
                           className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                         >
                           <option value="false">Crescente</option>
@@ -362,7 +362,7 @@ export default function FormMenu(props: Props) {
                         <div className="w-10 z-10"></div>
                         <select
                           {...register('showDescriptionPage')}
-                          placeholder=""
+
                           className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                         >
                           <option value="ALL">Sim</option>
@@ -387,7 +387,7 @@ export default function FormMenu(props: Props) {
                         <div className="w-10 z-10"></div>
                         <select
                           {...register('showThumbnailPage')}
-                          placeholder=""
+
                           className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                         >
                           <option value="ALL">Sim</option>

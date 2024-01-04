@@ -374,7 +374,7 @@ export default function ProfessionalData(props: any) {
                   value={docProfession}
                   onChange={setDocProfession}
                   type="text"
-                  placeholder=""
+
                 />
               </div>
 
@@ -384,7 +384,7 @@ export default function ProfessionalData(props: any) {
                   value={profession}
                   onChange={setProfession}
                   type="text"
-                  placeholder=""
+
                 />
               </div>
 
@@ -394,7 +394,7 @@ export default function ProfessionalData(props: any) {
                   value={specialties}
                   onChange={setSpecialties}
                   type="text"
-                  placeholder=""
+
                 />
               </div>
 
@@ -404,7 +404,7 @@ export default function ProfessionalData(props: any) {
                   value={subSpecialties}
                   onChange={setSubSpecialties}
                   type="text"
-                  placeholder=""
+
                 />
               </div>
 
@@ -425,7 +425,7 @@ export default function ProfessionalData(props: any) {
                         id="bio"
                         rows={5}
                         autoComplete="off"
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       />
                     </div>

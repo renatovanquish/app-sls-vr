@@ -68,7 +68,7 @@ export default function ReceiptsMethods(props: any) {
               value={pix}
               onChange={setPix}
               type="text"
-              placeholder=""
+
             />
           </div>
         </div>

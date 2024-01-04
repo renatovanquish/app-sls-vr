@@ -125,7 +125,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('aspectRatio')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="16:9">16:9 - Horizontal</option>
@@ -158,7 +158,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('viewShadow')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="-none">Nenhuma</option>
@@ -186,7 +186,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('viewBorder')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="0">Nenhuma</option>
@@ -213,7 +213,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('viewBgColor')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="none">Nenhuma</option>
@@ -245,7 +245,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('viewRounded')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="-none">Nenhum</option>

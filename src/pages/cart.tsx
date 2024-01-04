@@ -1171,7 +1171,7 @@ export default function CartPage() {
                 loadingFinalize={loadingFinalize}
                 message={
                   !deliveryOpen().status
-                    ? `Horário do delivery das ${deliveryOpen().deliveryOn} às 
+                    ? `Horário do delivery das ${deliveryOpen().deliveryOn} às
                   ${deliveryOpen().deliveryOff}.`
                     : config.minValueOrder > 0 && config.minValueOrder > total
                     ? `O valor mínimo da compra é de R$ ${config.minValueOrder
@@ -1371,7 +1371,7 @@ export function GetProduct(props: PropsProduct) {
                       }
                     }}
                     type="number"
-                    placeholder=""
+
                     min="1"
                     step="1"
                   />

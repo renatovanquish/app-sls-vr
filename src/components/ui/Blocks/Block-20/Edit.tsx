@@ -76,7 +76,7 @@ export default function Edit(props: Props) {
       <div className="max-w-full w-full mx-auto">
 
         <Segment className="mt-4" title="Modo de visualização" description="Selecione o modelo de exibição." />
-        
+
         <div className="flex flex-col sm:flex-row w-full sm:space-x-2 space-y-3 sm:space-y-0 mb-2 sm:mb-4">
         <div className="w-full md:w-2/4">
           <div className="flex -mx-3">
@@ -91,7 +91,7 @@ export default function Edit(props: Props) {
                 <div className="w-10 z-10"></div>
                 <select
                   {...register('justifyMode')}
-                  placeholder=""
+
                   className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                 >
                   <option value="start">A esquerda</option>
@@ -146,7 +146,7 @@ export default function Edit(props: Props) {
                         <div className="w-10 z-10"></div>
                         <select
                           {...register(`data.${index}.color` as const)}
-                          placeholder=""
+
                           className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                         >
                           <option value="neutral">Preto</option>
@@ -177,7 +177,7 @@ export default function Edit(props: Props) {
                         <div className="w-10 z-10"></div>
                         <select
                           {...register(`data.${index}.size` as const)}
-                          placeholder=""
+
                           className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                         >
                           <option value="sm">Pequeno</option>

@@ -653,7 +653,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('category')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         {categories
@@ -684,7 +684,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('subCategory')}
-                        placeholder=""
+
                         aria-invalid={errors.subCategory ? 'true' : 'false'}
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
@@ -732,7 +732,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('status')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value={PageStatus.ON}>ON LINE</option>
@@ -755,7 +755,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('hideInSearch')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value="true">Não</option>
@@ -796,7 +796,7 @@ export default function FormProduct(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('type')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value="DELIVERY">
@@ -836,7 +836,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('relationID')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value=""></option>
@@ -876,7 +876,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('stockControl')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value="false">Não</option>
@@ -1045,7 +1045,7 @@ export default function FormProduct(props: Props) {
                       }}
                       id="gender"
                       name="gender"
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value="1">Conteúdo 1</option>
@@ -1327,7 +1327,7 @@ export default function FormProduct(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('sideColumn')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value={PageSideColumn.L}>
@@ -1352,7 +1352,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('optionSideColumn')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value={PageOptionSideColumn.MENU_CONTENT_TAGS}>
@@ -1393,7 +1393,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('sideColumnPadX')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value="none">Nenhum</option>
@@ -1417,7 +1417,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('sideColumnPadY')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value="none">Nenhum</option>
@@ -1516,7 +1516,7 @@ export default function FormProduct(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('changeFreq')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value={PageChangeFreq.NEVER}>Nunca</option>
@@ -1548,7 +1548,7 @@ export default function FormProduct(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('priority')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value={PagePriority.P0}>0.0 (Mínima)</option>
@@ -1654,7 +1654,7 @@ export default function FormProduct(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('optionTitle')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value={PageOptionTitle.L}>
@@ -1684,7 +1684,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('titlePadX')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value="none">Nenhum</option>
@@ -1710,7 +1710,7 @@ export default function FormProduct(props: Props) {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('titlePadY')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value="none">Nenhum</option>
@@ -1744,7 +1744,7 @@ export default function FormProduct(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('footerSm')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value="hide">Não exibir</option>
@@ -1766,7 +1766,7 @@ export default function FormProduct(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('footerLg')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value="hide">Não exibir</option>
@@ -1793,7 +1793,7 @@ export default function FormProduct(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('hideInMenu')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value="false">Exibir</option>

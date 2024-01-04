@@ -127,7 +127,7 @@ const SignUpView: FC<Props> = () => {
               value={name}
               onChange={setName}
               type="text"
-              placeholder=""
+
               onInvalid={`${
                 name && (name.length < 5 || name.indexOf(' ') === -1)
                   ? 'Nome inválido.'
@@ -142,7 +142,7 @@ const SignUpView: FC<Props> = () => {
               value={email}
               onChange={setEmail}
               type="email"
-              placeholder=""
+
               onInvalid={`${
                 email && !validate(email) ? 'Email inválido.' : ''
               }`}
@@ -165,7 +165,7 @@ const SignUpView: FC<Props> = () => {
                     international={false}
                     countrySelectProps={{ unicodeFlags: true }}
                     defaultCountry="BR"
-                    placeholder=""
+
                   />
                 </div>
                 {phone && (!isValidPhoneNumber(phone) || phone.length < 13) && (
@@ -185,7 +185,7 @@ const SignUpView: FC<Props> = () => {
               icon={<Key />}
               value={password}
               onChange={setPassword}
-              placeholder=""
+
               onInvalid={`${
                 password &&
                 password.length < (process.env.PASSWORD_LENGTH as any)

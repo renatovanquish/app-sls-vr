@@ -169,7 +169,7 @@ export default function Config(props: Props) {
                 <div className="w-10 z-10"></div>
                 <select
                   {...register('view')}
-                  placeholder=""
+
                   className="bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                 >
                   <option value="show">Sim</option>
@@ -210,7 +210,7 @@ export default function Config(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('padX')}
-                    placeholder=""
+
                     className="bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="none">Nenhum</option>
@@ -234,7 +234,7 @@ export default function Config(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('padY')}
-                    placeholder=""
+
                     className="bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="none">Nenhum</option>
@@ -260,7 +260,7 @@ export default function Config(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('bgMode')}
-                    placeholder=""
+
                     className="bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="auto">Automático light/dark</option>
@@ -348,7 +348,7 @@ export default function Config(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('bgFolder')}
-                      placeholder=""
+
                       className="bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       {foldersList.map((f: any, index: number) => (

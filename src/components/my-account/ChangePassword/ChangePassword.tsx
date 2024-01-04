@@ -106,7 +106,7 @@ export default function ChangePassword(props: any) {
               value={oldPassword}
               onChange={setOldPassword}
               type="password"
-              placeholder=""
+
             />
           </div>
 
@@ -120,7 +120,7 @@ export default function ChangePassword(props: any) {
               value={newPassword}
               onChange={setNewPassword}
               type="password"
-              placeholder=""
+
             />
           </div>
 
@@ -132,7 +132,7 @@ export default function ChangePassword(props: any) {
               value={confirmePassword}
               onChange={setConfirmePassword}
               type="password"
-              placeholder=""
+
             />
           </div>
         </div>

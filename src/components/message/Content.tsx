@@ -339,7 +339,7 @@ export function ContentImageText(props: any) {
               id="description"
               rows={3}
               autoComplete="off"
-              placeholder=""
+
               className="text-accent-9 bg-accent-1 w-full rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
             />
           </div>

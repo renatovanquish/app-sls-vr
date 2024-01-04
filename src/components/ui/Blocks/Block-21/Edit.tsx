@@ -4,7 +4,7 @@ import { Button } from 'components/ui'
 import { Check } from 'components/icons'
 import { toast } from 'react-toast'
 import { useBlock } from 'hooks/useBlock'
-import { useDataBase } from 'hooks/useDataBase' 
+import { useDataBase } from 'hooks/useDataBase'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
 type Inputs = {
@@ -100,7 +100,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('dataBase')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     {dataBases.map((db:any, idx:number)=>(<option key={idx} value={db.id}>{db.name}</option>))}
@@ -122,7 +122,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('orderDesc')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="true">Sim</option>

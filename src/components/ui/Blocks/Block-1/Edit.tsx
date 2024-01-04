@@ -98,9 +98,9 @@ export default function Edit(props: Props) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="max-w-full w-full mx-auto">
-        
+
         <Segment className="mt-4" title='Imagem' description='Configurações da imagem.' />
-        
+
         <div className="flex flex-col sm:flex-row w-full sm:space-x-2 space-y-3 sm:space-y-0 mb-2 sm:mb-4">
           <div className="w-full md:w-3/4">
             <div className="flex flex-row-reverse w-full">
@@ -138,7 +138,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('aspectRatio')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="16:9">16:9 - Horizontal</option>
@@ -171,7 +171,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('viewShadow')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="-none">Nenhuma</option>
@@ -199,7 +199,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('viewBorder')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="0">Nenhuma</option>
@@ -226,7 +226,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('viewBgColor')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="none">Nenhuma</option>
@@ -259,7 +259,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('viewRounded')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="-none">Nenhum</option>
@@ -349,7 +349,7 @@ export default function Edit(props: Props) {
           </div>
         </div>
       </div>
-      
+
       <div className="mt-6">
         <Button type="submit" variant="slim" loading={loading} disabled={false}>
           <Check className="-ml-2 mr-2" />

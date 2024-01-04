@@ -250,7 +250,7 @@ export default function View(props: Props) {
                       onChange={(event: any) =>
                         setValue('type', event.target.value)
                       }
-                      placeholder="Selecione"
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option>Assunto</option>

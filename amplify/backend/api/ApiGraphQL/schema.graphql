@@ -1174,5 +1174,4 @@ type VideoObject @model
 {
   id:ID!
   token: String @function(name: "MediaConvert-${env}-tokenGen")
-}
-                          
+}  

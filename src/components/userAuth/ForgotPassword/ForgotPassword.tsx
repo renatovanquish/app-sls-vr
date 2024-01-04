@@ -113,7 +113,7 @@ const ForgotPassword: FC<Props> = () => {
     if (loading) {
       return null
     }
-    
+
     if (!dirty && !disabled) {
       setDirty(true)
       handleValidation()
@@ -225,7 +225,7 @@ const ForgotPassword: FC<Props> = () => {
                         international={false}
                         countrySelectProps={{ unicodeFlags: true }}
                         defaultCountry="BR"
-                        placeholder=""
+
                       />
                     </div>
                   </div>
@@ -241,7 +241,7 @@ const ForgotPassword: FC<Props> = () => {
                   value={loginInput}
                   onChange={setLoginInput}
                   type="text"
-                  placeholder=""
+
                 />
               )}
 
@@ -252,7 +252,7 @@ const ForgotPassword: FC<Props> = () => {
                 value={loginInput}
                 onChange={setLoginInput}
                 type="text"
-                placeholder=""
+
               />
             )}
 
@@ -316,7 +316,7 @@ const ForgotPassword: FC<Props> = () => {
               value={code}
               onChange={setCode}
               type="number"
-              placeholder=""
+
             />
 
             <Input
@@ -326,7 +326,7 @@ const ForgotPassword: FC<Props> = () => {
               value={newpassword}
               onChange={setNewpassword}
               type="password"
-              placeholder=""
+
               onInvalid={`${
                 newpassword &&
                 newpassword.length < (process.env.PASSWORD_LENGTH as any)

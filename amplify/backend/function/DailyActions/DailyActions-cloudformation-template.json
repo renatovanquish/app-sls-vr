@@ -110,12 +110,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "appvrLambdaRole10e50234",
+            "appvrLambdaRole6d2565cf",
             {
               "Fn::Join": [
                 "",
                 [
-                  "appvrLambdaRole10e50234",
+                  "appvrLambdaRole6d2565cf",
                   "-",
                   {
                     "Ref": "env"

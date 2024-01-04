@@ -28,7 +28,7 @@ const ChangePassword: FC<Props> = () => {
     if (loading) {
       return null
     }
-    
+
     if (!dirty && !disabled) {
       setDirty(true)
       handleValidation()
@@ -83,7 +83,7 @@ const ChangePassword: FC<Props> = () => {
               value={email}
               onChange={setEmail}
               type="email"
-              placeholder=""
+
             />
           )}
 
@@ -104,7 +104,7 @@ const ChangePassword: FC<Props> = () => {
                     international={false}
                     countrySelectProps={{ unicodeFlags: true }}
                     defaultCountry="BR"
-                    placeholder=""
+
                   />
                 </div>
               </div>
@@ -117,7 +117,7 @@ const ChangePassword: FC<Props> = () => {
             value={newPassword}
             onChange={setNewPassword}
             type="password"
-            placeholder=""
+
           />
 
           {message && (

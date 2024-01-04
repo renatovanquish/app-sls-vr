@@ -45,7 +45,7 @@ export default function Seo(props: Props) {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { googleAnalyticsID, googleSiteVerification } = data
     setLoading(true)
-    
+
     const updatedConfig = await updateConfig({ id: 'DEFAULT', googleAnalyticsID, googleSiteVerification })
     setConfig(updatedConfig)
 
@@ -106,7 +106,7 @@ export default function Seo(props: Props) {
                 value={`${sitemapUrl}`}
                 type="text"
                 autoComplete="off"
-                placeholder=""
+
                 readOnly={true}
                 id="sitemap"
                 className="text-accent-9 bg-accent-1 focus:ring-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-none"

@@ -112,7 +112,7 @@ export default function Edit(props: Props) {
       setCategories([] as any)
     }
   },[])
-  
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setLoading(true)
     if (data.source !== 'images_folder') { data.folder = '' }
@@ -154,7 +154,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('source')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="images_folder">Uma pasta da galeria de mídias</option>
@@ -180,7 +180,7 @@ export default function Edit(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('folder')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       {foldersList.map((f: any, index: number) => (
@@ -208,7 +208,7 @@ export default function Edit(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('category')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       {categories.map((i: any, k: number) => (
@@ -237,7 +237,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('viewFormat')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="cards">Wide</option>
@@ -266,7 +266,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('viewMode')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="card1">Apenas imagem</option>
@@ -298,7 +298,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('qtyCards')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="10">10</option>
@@ -326,7 +326,7 @@ export default function Edit(props: Props) {
                   <div className="w-10 z-10"></div>
                   <select
                     {...register('objectFit')}
-                    placeholder=""
+
                     className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                   >
                     <option value="contain">Conter</option>

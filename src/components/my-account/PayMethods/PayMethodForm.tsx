@@ -51,9 +51,9 @@ export default function PayMethodForm(props: any) {
     <div className="px-5 pb-32 md:pb-5">
       <form className="max-w-screen-md" onSubmit={handleSubmit}>
         <div className="mt-4 grid grid-cols-6 gap-4">
-          {!id && (process.env.PAGARME_DEBIT || 
-          process.env.PAGARME_PIX || 
-          config.allowPayOnDelivery || 
+          {!id && (process.env.PAGARME_DEBIT ||
+          process.env.PAGARME_PIX ||
+          config.allowPayOnDelivery ||
           config.allowLocalPickup) && (
             <div className="col-span-6">
               <div className="flex -mx-3">
@@ -73,7 +73,7 @@ export default function PayMethodForm(props: any) {
                       }}
                       id="method"
                       name="method"
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value={PaymentMethods.CREDIT}>
@@ -106,7 +106,7 @@ export default function PayMethodForm(props: any) {
                   value={holderName}
                   onChange={setHolderName}
                   type="text"
-                  placeholder=""
+
                 />
               </div>
 
@@ -117,7 +117,7 @@ export default function PayMethodForm(props: any) {
                   value={number}
                   onChange={setNumber}
                   type="number"
-                  placeholder=""
+
                 />
               </div>
 
@@ -139,7 +139,7 @@ export default function PayMethodForm(props: any) {
                         }}
                         id="expMonth"
                         name="expMonth"
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value=""></option>
@@ -179,7 +179,7 @@ export default function PayMethodForm(props: any) {
                         }}
                         id="expYear"
                         name="expYear"
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                       >
                         <option value=""></option>
@@ -229,7 +229,7 @@ export default function PayMethodForm(props: any) {
                   value={cvv}
                   onChange={setCvv}
                   type="text"
-                  placeholder=""
+
                 />
               </div>
 
@@ -260,7 +260,7 @@ export default function PayMethodForm(props: any) {
                     value={holderDocument}
                     onChange={setHolderDocument}
                     type="text"
-                    placeholder=""
+
                   />
                 </div>
               )}

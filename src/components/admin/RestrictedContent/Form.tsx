@@ -327,7 +327,7 @@ export default function RestrictedContent(props: Props) {
                           <div className="w-10 z-10"></div>
                           <select
                             {...register("type")}
-                            placeholder=""
+
                             aria-invalid={errors.type ? "true" : "false"}
                             className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                           >
@@ -356,7 +356,7 @@ export default function RestrictedContent(props: Props) {
                         <div className="w-10 z-10"></div>
                         <select
                           {...register("status")}
-                          placeholder=""
+
                           className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                         >
                           <option value="rc-on">ON LINE</option>
@@ -448,7 +448,7 @@ export default function RestrictedContent(props: Props) {
                     value={minimumPercentage}
                     onChange={setMinimumPercentage}
                     type="number"
-                    placeholder=""
+
                   />
                 </div>
                 <div className="basis-1/2">
@@ -457,7 +457,7 @@ export default function RestrictedContent(props: Props) {
                     value={totalHours}
                     onChange={setTotalHours}
                     type="number"
-                    placeholder=""
+
                   />
                 </div>
               </div>

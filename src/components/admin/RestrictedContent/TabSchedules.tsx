@@ -178,7 +178,7 @@ export default function TabSchedules(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('frequency')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value={ScheduleFrequencies.NONE}>Nenhuma</option>
@@ -209,7 +209,7 @@ export default function TabSchedules(props: Props) {
                     <div className="w-10 z-10"></div>
                     <select
                       {...register('viewType')}
-                      placeholder=""
+
                       className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-accent-2 outline-none focus:border-indigo-500"
                     >
                       <option value="ALL">Em ambos</option>

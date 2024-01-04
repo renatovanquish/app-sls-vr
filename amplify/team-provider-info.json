@@ -1,4 +1,57 @@
 {
+  "master": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-appvr-master-84656-authRole",
+      "UnauthRoleArn": "arn:aws:iam::074012923850:role/amplify-appvr-master-84656-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::074012923850:role/amplify-appvr-master-84656-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-appvr-master-84656-deployment",
+      "UnauthRoleName": "amplify-appvr-master-84656-unauthRole",
+      "StackName": "amplify-appvr-master-84656",
+      "StackId": "arn:aws:cloudformation:us-east-1:074012923850:stack/amplify-appvr-master-84656/2c203980-010f-11ed-ad3f-122e7453d9fd",
+      "AmplifyAppId": "d3o5i5mwkns0gl"
+    },
+    "categories": {
+      "auth": {
+        "userPoolGroups": {},
+        "AuthCognito": {}
+      },
+      "function": {
+        "AdminQueries0ab6d7b2": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/AdminQueries0ab6d7b2-5a7775365a6632516655-build.zip"
+        },
+        "AdminCreateUser": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/AdminCreateUser-366b56332f5953434258-build.zip"
+        },
+        "AdminAddUserToGroup": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/AdminAddUserToGroup-4f57545269544c695466-build.zip"
+        },
+        "AdminDeleteUser": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/AdminDeleteUser-49487775743651637856-build.zip"
+        },
+        "SignedUrl": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/SignedUrl-323077737631615a7250-build.zip"
+        },
+        "DailyActions": {
+          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
+          "s3Key": "amplify-builds/DailyActions-33625649425561457257-build.zip"
+        }
+      },
+      "video": {
+        "vod": {
+          "s3UUID": "09wx5z28"
+        }
+      },
+      "storage": {
+        "S3Storage": {}
+      }
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-appvr-dev-121447-authRole",
@@ -53,52 +106,6 @@
       "api": {
         "AdminQueries": {},
         "ApiGraphQL": {}
-      }
-    }
-  },
-  "master": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-appvr-master-84656-authRole",
-      "UnauthRoleArn": "arn:aws:iam::074012923850:role/amplify-appvr-master-84656-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::074012923850:role/amplify-appvr-master-84656-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-appvr-master-84656-deployment",
-      "UnauthRoleName": "amplify-appvr-master-84656-unauthRole",
-      "StackName": "amplify-appvr-master-84656",
-      "StackId": "arn:aws:cloudformation:us-east-1:074012923850:stack/amplify-appvr-master-84656/2c203980-010f-11ed-ad3f-122e7453d9fd",
-      "AmplifyAppId": "d3o5i5mwkns0gl"
-    },
-    "categories": {
-      "auth": {
-        "userPoolGroups": {},
-        "AuthCognito": {}
-      },
-      "function": {
-        "AdminQueries0ab6d7b2": {
-          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
-          "s3Key": "amplify-builds/AdminQueries0ab6d7b2-34706c76496d482f6474-build.zip"
-        },
-        "AdminCreateUser": {
-          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
-          "s3Key": "amplify-builds/AdminCreateUser-6d3746686d6a71483235-build.zip"
-        },
-        "AdminAddUserToGroup": {
-          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
-          "s3Key": "amplify-builds/AdminAddUserToGroup-50793048756848334f77-build.zip"
-        },
-        "AdminDeleteUser": {
-          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
-          "s3Key": "amplify-builds/AdminDeleteUser-3155586141696a423345-build.zip"
-        },
-        "SignedUrl": {
-          "deploymentBucketName": "amplify-appvr-master-84656-deployment",
-          "s3Key": "amplify-builds/SignedUrl-38575656633374596752-build.zip"
-        }
-      },
-      "video": {
-        "vod": {
-          "s3UUID": "09wx5z28"
-        }
       }
     }
   }

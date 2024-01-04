@@ -343,7 +343,7 @@ export default function ConfigPage() {
                         onChange={onChange}
                         international={false}
                         defaultCountry="BR"
-                        placeholder=""
+
                       />
                     )}
                   />
@@ -369,7 +369,7 @@ export default function ConfigPage() {
                         onChange={onChange}
                         international={false}
                         defaultCountry="BR"
-                        placeholder=""
+
                       />
                     )}
                   />
@@ -378,7 +378,7 @@ export default function ConfigPage() {
             </div>
 
             {/**
-                       * 
+                       *
             <Segment
               title="AUTENTICAÇÃO DO USUÁRIO"
               description="Forma de validar o login de acesso."
@@ -398,7 +398,7 @@ export default function ConfigPage() {
                       <div className="w-10 z-10"></div>
                       <select
                         {...register('validationMode')}
-                        placeholder=""
+
                         className="text-accent-9 bg-accent-1 w-full pl-3 -ml-10 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       >
                         <option value="CODE">
@@ -413,7 +413,7 @@ export default function ConfigPage() {
                 </div>
               </div>
             </div>
-                       * 
+                       *
                        */}
           </div>
         )}
@@ -592,7 +592,7 @@ export default function ConfigPage() {
                         onChange={onChange}
                         international={false}
                         defaultCountry="BR"
-                        placeholder=""
+
                       />
                     )}
                   />
