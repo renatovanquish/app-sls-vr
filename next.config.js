@@ -7,7 +7,7 @@ const runtimeCaching = require('next-pwa/cache')
 // runtimeCaching[0].urlPattern = redirect.destination
 
 const withPWA = require('next-pwa')({
-  disable: true,
+  disable: false,
   register: true,
   dest: 'public',
   runtimeCaching,
@@ -28,12 +28,13 @@ const settings = {
       'd1fokz5gyb0rt6.cloudfront.net',
       'd32ks7xktgi6v0.cloudfront.net',
       'dwmmakpya687s.cloudfront.net',
-      'd3adpvgoxs0ne.cloudfront.net', 
-      'images.unsplash.com', 
-      'dev.voceradiologista.com.br', 
-      'voceradiologista.com.br', 
+      'd3adpvgoxs0ne.cloudfront.net',
+      'images.unsplash.com',
+      'dev.voceradiologista.com.br',
+      'voceradiologista.com.br',
       'appsls35b3bdc71fa2449bb5d2de82371b2eaf121447-dev.s3.us-east-1.amazonaws.com',
-      'appsls35b3bdc71fa2449bb5d2de82371b2eaf84656-master.s3.us-east-1.amazonaws.com'
+      'appsls35b3bdc71fa2449bb5d2de82371b2eaf84656-master.s3.us-east-1.amazonaws.com',
+      'app-sls-orcuymrkk-rtcj.vercel.app'
     ],
   },
   env: {
@@ -61,7 +62,7 @@ const settings = {
     },
     CRYPTO_PASS: 'eebeb3aaa8dfe480979a1947ac88f614',
     PAGARME_API: 'https://api.pagar.me/core/v5',
-    PAGARME_SECRET_KEY: '', 
+    PAGARME_SECRET_KEY: '',
     PAGARME_DEBIT: false,
     PAGARME_PIX: true,
     HOTMART_HOTTOK: 'kzXZ66cKBUbhAgKRpRLlZfNyZbfi49f8a8788e-08b5-41c9-9b56-5a6473e2a01a',
@@ -78,7 +79,7 @@ const settings = {
       { type: 'CONTACT', label: 'Contato', status: ['ACTIVE'], restricted: false },
       { type: 'PIPELINE', label: 'Pipeline', status: ['AGUARDANDO', 'FINALIZADO'], restricted: false },
       { type: 'COURSE', label: 'Curso', status: ['AGUARDANDO'], restricted: true },
-      { type: 'EBOOK', label: 'Ebook', status: ['AGUARDANDO'], restricted: true } 
+      { type: 'EBOOK', label: 'Ebook', status: ['AGUARDANDO'], restricted: true }
     ]
   },
   async redirects() {
