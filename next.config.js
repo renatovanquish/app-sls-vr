@@ -34,7 +34,8 @@ const settings = {
       'voceradiologista.com.br',
       'appsls35b3bdc71fa2449bb5d2de82371b2eaf121447-dev.s3.us-east-1.amazonaws.com',
       'appsls35b3bdc71fa2449bb5d2de82371b2eaf84656-master.s3.us-east-1.amazonaws.com',
-      'app-sls-orcuymrkk-rtcj.vercel.app'
+      'app-sls-orcuymrkk-rtcj.vercel.app',
+      'dfadewkytcb2i.cloudfront.net'
     ],
   },
   env: {
